@@ -24,12 +24,13 @@ public class CreatePostCommandHandlerTests
         currentUserProviderMock.Setup(p => p.GetCurrentUserId()).Returns(user.Id);
 
         var handler = new CreatePostCommandHandler(dbContext, currentUserProviderMock.Object);
-       var command = new CreatePostCommand("   Валидна содржина со празни места околу.   ", null);
+        var command = new CreatePostCommand("   Valid content with padding around it.   ", null);
+
         // Act
         var result = await handler.Handle(command, CancellationToken.None);
 
         // Assert
-        Assert.Equal("Валидна содржина со празни места околу.", result.Content);
+        Assert.Equal("Valid content with padding around it.", result.Content);
         Assert.Equal("teona", result.AuthorUsername);
 
         var savedPost = await dbContext.Posts.FirstOrDefaultAsync(p => p.Id == result.Id);
