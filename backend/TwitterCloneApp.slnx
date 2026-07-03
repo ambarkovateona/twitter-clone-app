@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/TwitterCloneApp.Api/TwitterCloneApp.Api.csproj" />
+    <Project Path="src/TwitterCloneApp.Application/TwitterCloneApp.Application.csproj" />
+    <Project Path="src/TwitterCloneApp.Domain/TwitterCloneApp.Domain.csproj" />
+    <Project Path="src/TwitterCloneApp.Infrastructure/TwitterCloneApp.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/TwitterCloneApp.Application.Tests/TwitterCloneApp.Application.Tests.csproj" />
+  </Folder>
+</Solution>

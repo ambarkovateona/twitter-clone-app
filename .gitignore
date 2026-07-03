@@ -1,0 +1,22 @@
+@'
+# .NET
+backend/**/bin/
+backend/**/obj/
+backend/**/.vs/
+*.user
+TestResults/
+
+# Angular / Node
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+npm-debug.log*
+
+# Uploaded images 
+backend/src/TwitterCloneApp.Api/wwwroot/uploads/*
+!backend/src/TwitterCloneApp.Api/wwwroot/uploads/.gitkeep
+
+# OS/Editor
+.DS_Store
+.vscode/
+'@ | Set-Content -Path ".gitignore" -Encoding utf8

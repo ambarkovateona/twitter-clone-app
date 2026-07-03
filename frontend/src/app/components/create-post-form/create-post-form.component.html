@@ -1,0 +1,54 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="create-post-form">
+  <mat-form-field appearance="outline" class="content-field">
+    <mat-label>What's happening?</mat-label>
+<textarea
+  matInput
+  formControlName="content"
+  rows="4"
+  maxlength="140"
+  placeholder="Write something (at least 12 characters)...">
+</textarea>
+    <mat-hint align="end">{{ contentControl.value.length }} / 140</mat-hint>
+    @if (contentControl.invalid && contentControl.touched) {
+     @if (contentControl.hasError('required')) {
+  <mat-error>Content is required.</mat-error>
+}
+@if (contentControl.hasError('minlength')) {
+  <mat-error>Must be at least 12 characters.</mat-error>
+}
+    }
+  </mat-form-field>
+
+  @if (imagePreviewUrl(); as previewUrl) {
+    <div class="image-preview">
+      <img [src]="previewUrl" alt="Преглед на избраната слика" class="image-preview-img" />
+     <button mat-icon-button type="button" class="image-remove-button" (click)="removeImage()" aria-label="Remove image">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  }
+
+  @if (imageError(); as error) {
+    <p class="image-error">{{ error }}</p>
+  }
+
+  <div class="form-actions">
+    <input
+      type="file"
+      accept="image/jpeg,image/png,image/webp"
+      #fileInput
+      hidden
+      (change)="onImageSelected($event)" />
+    <button mat-stroked-button type="button" (click)="fileInput.click()">
+  <mat-icon>image</mat-icon>
+  Image
+</button>
+
+    <span class="spacer"></span>
+
+    <button mat-flat-button color="primary" type="submit" [disabled]="form.invalid">
+      <mat-icon>send</mat-icon>
+      Post
+    </button>
+  </div>
+</form>

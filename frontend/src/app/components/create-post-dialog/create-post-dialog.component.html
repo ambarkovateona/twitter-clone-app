@@ -1,0 +1,8 @@
+<h2 mat-dialog-title>New Post</h2>
+<mat-divider />
+<mat-dialog-content>
+  <app-create-post-form (createPost)="onCreatePost($event)" />
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button type="button" (click)="dialogRef.close()">Cancel</button>
+</mat-dialog-actions>
