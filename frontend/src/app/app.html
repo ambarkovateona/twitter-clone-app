@@ -1,19 +1,18 @@
-<mat-toolbar class="app-toolbar">
-  <span class="brand">Twitter Clone</span>
+<mat-toolbar color="primary">
+  <span>Twitter Clone</span>
   <span class="spacer"></span>
-  <a mat-button routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" class="nav-link">
+  <a mat-button routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
     <mat-icon>home</mat-icon>
-    <span class="nav-label">Home</span>
+    Home
   </a>
-  <a mat-button routerLink="/mine" routerLinkActive="active-link" class="nav-link">
+  <a mat-button routerLink="/mine" routerLinkActive="active-link">
     <mat-icon>person</mat-icon>
-    <span class="nav-label">Profile</span>
+    Profile
   </a>
-  <button mat-flat-button color="primary" class="post-button" (click)="openCreatePostDialog()">
+  <button mat-raised-button color="accent" (click)="openCreatePostDialog()">
     <mat-icon>edit</mat-icon>
-    <span class="nav-label">Post</span>
+    Post
   </button>
 </mat-toolbar>
-
 
 <router-outlet />

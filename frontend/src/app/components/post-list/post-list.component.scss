@@ -1,95 +1,30 @@
 .post-list {
   display: flex;
   flex-direction: column;
-  gap: var(--app-space-3);
-}
-
-.post-card {
-  border-radius: 14px;
-  transition: background-color var(--app-motion-standard);
-  animation: fade-in 200ms ease;
-
-  &:hover {
-    background: color-mix(in srgb, var(--mat-sys-on-surface) 4%, var(--mat-sys-surface));
-  }
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(4px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  gap: 16px;
 }
 
 .post-avatar {
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  background: var(--mat-sys-primary-container);
-  color: var(--mat-sys-on-primary-container);
+  background: #e0e0e0;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 600;
-  font-size: 14px;
+  font-weight: 500;
 }
 
-.post-username {
-  font-size: var(--app-font-username-size);
-  font-weight: var(--app-font-username-weight);
-  letter-spacing: var(--app-font-username-tracking);
-}
-
-.post-date {
-  font-size: var(--app-font-timestamp-size);
-  color: var(--mat-sys-on-surface-variant);
-}
-
-.post-content {
-  margin: var(--app-space-2) 0 0;
-  font-size: var(--app-font-body-size);
-  line-height: var(--app-font-body-line-height);
+.post-image {
+  display: block;
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  margin-top: 12px;
 }
 
 .loading-state {
   display: flex;
   justify-content: center;
-  padding: var(--app-space-6) 0;
-}
-
-.empty-state {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--app-space-2);
-  padding: var(--app-space-7) var(--app-space-4);
-  border: 1px dashed var(--mat-sys-outline-variant);
-  border-radius: 14px;
-  color: var(--mat-sys-on-surface-variant);
-}
-
-.empty-state-icon {
-  font-size: 28px;
-  width: 28px;
-  height: 28px;
-  opacity: 0.5;
-}
-
-.empty-state-text {
-  margin: 0;
-  font-size: var(--app-font-body-size);
-  font-weight: 500;
-}
-.post-image {
-  display: block;
-  width: 100%;
-  max-height: 420px;
-  object-fit: cover;
-  border-radius: 12px;
-  margin-top: var(--app-space-3);
-  border: 1px solid var(--mat-sys-outline-variant);
+  padding: 40px 0;
 }

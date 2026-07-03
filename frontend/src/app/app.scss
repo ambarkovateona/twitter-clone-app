@@ -1,58 +1,7 @@
-.app-toolbar {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  gap: var(--app-space-1);
-  border-bottom: 1px solid var(--mat-sys-outline-variant);
-}
-
-.brand {
-  font-weight: 600;
-  font-size: 17px;
-  letter-spacing: -0.01em;
-}
-
 .spacer {
   flex: 1 1 auto;
 }
 
-.nav-link {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: var(--app-font-nav-label-size);
-  font-weight: var(--app-font-nav-label-weight);
-  border-radius: 999px;
-  transition: background-color var(--app-motion-standard), color var(--app-motion-standard);
-}
-
 .active-link {
-  background: var(--mat-sys-primary-container);
-  color: var(--mat-sys-on-primary-container);
-}
-
-.post-button {
-  margin-left: var(--app-space-2);
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-weight: 600;
-  transition: opacity var(--app-motion-standard);
-
-  &:hover {
-    opacity: 0.9;
-  }
-}
-
-@media (max-width: 599px) {
-  .brand {
-    display: none;
-  }
-  .nav-label {
-    display: none;
-  }
-  .nav-link, .post-button {
-    min-width: 44px;
-    padding: 0 10px;
-  }
+  font-weight: 700;
 }

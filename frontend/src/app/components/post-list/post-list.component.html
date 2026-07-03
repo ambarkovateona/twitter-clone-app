@@ -4,32 +4,25 @@
       <mat-spinner diameter="36" />
     </div>
   } @else if (posts()!.length === 0) {
-    <div class="empty-state">
-      <mat-icon class="empty-state-icon">forum</mat-icon>
-      <p class="empty-state-text">No posts yet.</p>
-    </div>
+    <p>No posts yet.</p>
   } @else {
     @for (post of posts(); track post.id) {
-      <mat-card appearance="outlined" class="post-card">
+      <mat-card class="post-card">
         <mat-card-header>
           <div matCardAvatar class="post-avatar">{{ post.authorUsername.charAt(0).toUpperCase() }}</div>
-          <mat-card-title class="post-username">{{ post.authorUsername }}</mat-card-title>
-          <mat-card-subtitle class="post-date">{{ post.createdAt | date:'medium' }}</mat-card-subtitle>
+          <mat-card-title>{{ post.authorUsername }}</mat-card-title>
+          <mat-card-subtitle>{{ post.createdAt | date:'medium' }}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-          <p class="post-content">{{ post.content }}</p>
+          <p>{{ post.content }}</p>
           @if (post.imageUrl) {
-            <img
-  [src]="post.imageUrl | imageUrl"
-  alt="Image attached to the post"
-  class="post-image"
-  loading="lazy" />
+            <img [src]="post.imageUrl | imageUrl" alt="Image attached to the post" class="post-image" />
           }
         </mat-card-content>
         @if (showDeleteButton()) {
           <mat-card-actions align="end">
             <button mat-button color="warn" (click)="deletePost.emit(post.id)">
-              <mat-icon>delete_outline</mat-icon>
+              <mat-icon>delete</mat-icon>
               Delete
             </button>
           </mat-card-actions>
