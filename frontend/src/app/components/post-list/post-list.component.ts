@@ -14,7 +14,8 @@ import { ImageUrlPipe } from '../../pipes/image-url.pipe';
   styleUrl: './post-list.component.scss'
 })
 export class PostListComponent {
-  posts = input.required<Post[] | null>();
+  posts = input.required<Post[]>();
+  loading = input(false);
   showDeleteButton = input(false);
   deletePost = output<string>();
 }

@@ -1,4 +1,15 @@
 <div class="page-container">
   <h1 class="page-title">Home</h1>
-  <app-post-list [posts]="posts()" />
+  <app-post-list [posts]="posts()" [loading]="loading()" />
+  @if (hasMore()) {
+    <div class="load-more-container">
+      <button mat-stroked-button (click)="loadMore()" [disabled]="loadingMore()">
+        @if (loadingMore()) {
+          <mat-spinner diameter="20" />
+        } @else {
+          Load more
+        }
+      </button>
+    </div>
+  }
 </div>

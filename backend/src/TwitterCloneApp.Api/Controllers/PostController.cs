@@ -7,6 +7,7 @@ using TwitterCloneApp.Application.Posts.Commands.DeletePost;
 using TwitterCloneApp.Application.Posts.Dtos;
 using TwitterCloneApp.Application.Posts.Queries.GetAllPosts;
 using TwitterCloneApp.Application.Posts.Queries.GetMyPosts;
+using TwitterCloneApp.Application.Common.Models;
 
 namespace TwitterCloneApp.Api.Controllers;
 
@@ -33,18 +34,24 @@ public class PostsController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<List<PostDto>>> GetAll(CancellationToken cancellationToken)
-    {
-        var result = await _mediator.Send(new GetAllPostsQuery(), cancellationToken);
-        return Ok(result);
-    }
+public async Task<ActionResult<PagedResult<PostDto>>> GetAll(
+    [FromQuery] int page = 1,
+    [FromQuery] int pageSize = 10,
+    CancellationToken cancellationToken = default)
+{
+    var result = await _mediator.Send(new GetAllPostsQuery(page, pageSize), cancellationToken);
+    return Ok(result);
+}
 
-    [HttpGet("mine")]
-    public async Task<ActionResult<List<PostDto>>> GetMine(CancellationToken cancellationToken)
-    {
-        var result = await _mediator.Send(new GetMyPostsQuery(), cancellationToken);
-        return Ok(result);
-    }
+[HttpGet("mine")]
+public async Task<ActionResult<PagedResult<PostDto>>> GetMine(
+    [FromQuery] int page = 1,
+    [FromQuery] int pageSize = 10,
+    CancellationToken cancellationToken = default)
+{
+    var result = await _mediator.Send(new GetMyPostsQuery(page, pageSize), cancellationToken);
+    return Ok(result);
+}
 
     [HttpPost]
     [RequestSizeLimit(6_000_000)]

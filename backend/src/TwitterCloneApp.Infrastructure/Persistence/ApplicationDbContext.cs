@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;   // ja nosi samata db context klasa, modelbuilder
+using Microsoft.EntityFrameworkCore;   // ja nosi samata db context klasa, modelbuilder, set<t> metod
 using TwitterCloneApp.Application.Common.Interfaces;   //IApplicationDbContextInterface
 using TwitterCloneApp.Domain.Entities;   //Post i User
 

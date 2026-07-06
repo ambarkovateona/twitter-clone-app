@@ -1,7 +1,8 @@
 import { Injectable, inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, Subject, tap } from 'rxjs';
 import { Post } from '../models/post.model';
+import { PagedResult } from '../models/paged-result.model';
 import { environment } from '../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
@@ -12,12 +13,14 @@ export class PostsService {
   private readonly postsChangedSource = new Subject<void>();
   readonly postsChanged$ = this.postsChangedSource.asObservable();
 
-  getAllPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>(this.baseUrl);
+  getAllPosts(page: number = 1, pageSize: number = 10): Observable<PagedResult<Post>> {
+    const params = new HttpParams().set('page', page).set('pageSize', pageSize);
+    return this.http.get<PagedResult<Post>>(this.baseUrl, { params });
   }
 
-  getMyPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>(`${this.baseUrl}/mine`);
+  getMyPosts(page: number = 1, pageSize: number = 10): Observable<PagedResult<Post>> {
+    const params = new HttpParams().set('page', page).set('pageSize', pageSize);
+    return this.http.get<PagedResult<Post>>(`${this.baseUrl}/mine`, { params });
   }
 
   createPost(content: string, image: File | null): Observable<Post> {
@@ -26,7 +29,6 @@ export class PostsService {
     if (image) {
       formData.append('image', image);
     }
-
     return this.http.post<Post>(this.baseUrl, formData).pipe(
       tap(() => this.postsChangedSource.next())
     );

@@ -1,4 +1,15 @@
 <div class="page-container">
   <h1 class="page-title">Profile</h1>
-  <app-post-list [posts]="posts()" [showDeleteButton]="true" (deletePost)="onDeletePost($event)" />
+  <app-post-list [posts]="posts()" [loading]="loading()" [showDeleteButton]="true" (deletePost)="onDeletePost($event)" />
+  @if (hasMore()) {
+    <div class="load-more-container">
+      <button mat-stroked-button (click)="loadMore()" [disabled]="loadingMore()">
+        @if (loadingMore()) {
+          <mat-spinner diameter="20" />
+        } @else {
+          Load more
+        }
+      </button>
+    </div>
+  }
 </div>

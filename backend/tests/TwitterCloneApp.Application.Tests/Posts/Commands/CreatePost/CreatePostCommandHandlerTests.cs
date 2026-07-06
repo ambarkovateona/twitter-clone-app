@@ -13,7 +13,7 @@ public class CreatePostCommandHandlerTests
     [Fact]
     public async Task Handle_ValidCommand_CreatesPostWithTrimmedContentAndCorrectAuthor()
     {
-        // Arrange
+        
         await using var dbContext = TestDbContextFactory.Create();
 
         var user = new User { Id = Guid.NewGuid(), Username = "teona" };

@@ -113,3 +113,8 @@ html {
 
   --app-motion-standard: 150ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+.load-more-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+}
